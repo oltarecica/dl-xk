@@ -1,0 +1,28 @@
+[project]
+name = "deep-learning"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "geopandas",
+    "matplotlib",
+    "numpy",
+    "pandas",
+    "rasterio",
+    "statsmodels",
+    "patsy",
+    "tqdm",
+    "scipy",
+    "scikit-image",
+    "scikit-learn",
+    "ipykernel",
+    "rasterstats",
+    "torch",
+    "torchvision",
+    "torchinfo",
+    "lightning>=2.6.1",
+    "transformers>=5.8.1",
+    "opencv-python>=4.13.0.92",
+    "imutils>=0.5.4",
+]
