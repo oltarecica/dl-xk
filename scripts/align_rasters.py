@@ -54,11 +54,11 @@ def align(src_path, out_path, resampling):
         print(f"  Aligned   : {result.shape == ref_shape and result.transform == ref_transform}")
 
 
-print("=== Aligning GHSL built-up surface ===")
+print("=== Aligning GHSL built-up surface 2015 ===")
 align(
-    src_path   = "data/ghsl_builtup_kosovo_2020.tif",
-    out_path   = "data/ghsl_builtup_kosovo_2020_aligned.tif",
-    resampling = Resampling.average,   # mean built-up fraction across 100m → 500m
+    src_path   = "data/ghsl_builtup_kosovo_2015.tif",
+    out_path   = "data/ghsl_builtup_kosovo_2015_aligned.tif",
+    resampling = Resampling.average,
 )
 
 print("\n=== Aligning GHS-POP population ===")

@@ -30,17 +30,18 @@ Export.image.toDrive({
 });
 
 // ============================================================
-// 2. GHSL Built-Up Surface — 2020 epoch (last real satellite obs)
+// 2. GHSL Built-Up Surface — 2015 epoch (pre-emigration wave)
 //    Dataset: JRC/GHSL/P2023A — derived from Sentinel-2 + Landsat
 //    Band:    built_surface (m² per 100m pixel) → divided by
 //             10000 to give fraction [0, 1].
-//    2020 is the most recent epoch with actual satellite data.
-//    2025 exists in P2023A but is a model projection, not observed.
-//    The 5-year gap (2020 structure vs 2025 light) is the signal:
-//    buildings persist after people leave, lights go dark first.
+//    2015 is chosen deliberately: it captures Kosovo's building
+//    stock BEFORE the main emigration wave (2015-2020). Paired
+//    with VIIRS 2025 (post-emigration lights), the residual
+//    captures where buildings from 2015 no longer have matching
+//    light levels — the depopulation signal.
 // ============================================================
 var ghsl = ee.ImageCollection('JRC/GHSL/P2023A/GHS_BUILT_S')
-  .filter(ee.Filter.date('2020-01-01', '2021-01-01'))
+  .filter(ee.Filter.date('2015-01-01', '2016-01-01'))
   .first()
   .select('built_surface')
   .divide(10000)
@@ -48,16 +49,16 @@ var ghsl = ee.ImageCollection('JRC/GHSL/P2023A/GHS_BUILT_S')
 
 Export.image.toDrive({
   image: ghsl,
-  description: 'ghsl_builtup_kosovo_2020',
+  description: 'ghsl_builtup_kosovo_2015',
   folder: 'dl-xk-data',
-  fileNamePrefix: 'ghsl_builtup_kosovo_2020',
+  fileNamePrefix: 'ghsl_builtup_kosovo_2015',
   region: kosovo,
   scale: 500,
   maxPixels: 1e9
 });
 
 // ============================================================
-// 3. GHS-POP Population Grid — 2020 epoch (last real satellite obs)
+// 3. GHS-POP Population Grid — 2020 epoch
 //    Dataset: JRC/GHSL/P2023A
 //    Band:    population_count (people per 100m pixel)
 //    Exported at 500m: population sums when aggregating.
@@ -90,7 +91,7 @@ Map.addLayer(viirs.clip(kosovo), {
 Map.addLayer(ghsl.clip(kosovo), {
   min: 0, max: 0.5,
   palette: ['ffffff', 'ffcc00', 'ff6600', 'cc0000']
-}, 'GHSL Built-Up 2020');
+}, 'GHSL Built-Up 2015');
 
 Map.addLayer(ghspop.clip(kosovo), {
   min: 0, max: 100,
