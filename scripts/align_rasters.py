@@ -2,7 +2,7 @@
 Reproject GHSL built-up surface and GHS-POP (both in ESRI:54009 Mollweide)
 onto the VIIRS pixel grid (EPSG:4326).
 
-Outputs (same CRS, shape, and pixel boundaries as viirs_nightlights_kosovo_2023.tif):
+Outputs (same CRS, shape, and pixel boundaries as viirs_nightlights_kosovo_2025.tif):
   ghsl_builtup_kosovo_2020_aligned.tif
   ghsl_population_kosovo_2020_aligned.tif
 """
@@ -11,7 +11,7 @@ import numpy as np
 import rasterio
 from rasterio.warp import reproject, Resampling
 
-viirs_path = "data/viirs_nightlights_kosovo_2023.tif"
+viirs_path = "data/viirs_nightlights_kosovo_2025.tif"
 
 with rasterio.open(viirs_path) as viirs_src:
     ref_crs       = viirs_src.crs

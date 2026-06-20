@@ -2,7 +2,7 @@ import rasterio
 import numpy as np
 import matplotlib.pyplot as plt
 
-viirs_path = "data/viirs_nightlights_kosovo_2023.tif"
+viirs_path = "data/viirs_nightlights_kosovo_2025.tif"
 ghsl_path  = "data/ghsl_builtup_kosovo_2020_aligned.tif"
 
 # --- 1. Basic properties ---
@@ -40,7 +40,7 @@ print(f"  Pearson r = {corr:.4f}  (expect positive, ~0.4-0.7)")
 fig, axes = plt.subplots(1, 3, figsize=(15, 4))
 
 axes[0].imshow(viirs, cmap='inferno', vmin=0, vmax=10)
-axes[0].set_title("VIIRS Nightlights 2023\n(avg radiance nW/cm2/sr)")
+axes[0].set_title("VIIRS Nightlights 2025\n(avg radiance nW/cm2/sr)")
 axes[0].axis('off')
 
 axes[1].imshow(ghsl, cmap='YlOrRd', vmin=0, vmax=0.5)
