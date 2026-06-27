@@ -30,6 +30,9 @@ profile_default/
 # Jupyter
 *.ipynb_checkpoints
 
+# Local datasets and generated arrays
+data/
+
 # VS Code
 .vscode/
 
